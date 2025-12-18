@@ -87,17 +87,17 @@ A single-page static website for "Guys Having Coffee," a casual men's coffee mee
 
 **Content Requirements:**
 - **Regular Schedule**: "1st Saturday and 3rd Tuesday of each month"
-- **Time**: Specific time (e.g., "9:00 AM - 10:30 AM")
-- **Next Meetup**: Specific date and time for next meeting (manual update acceptable)
+- **Time**: 
+  - Saturday: 8:00 AM - 10:00 AM
+  - Tuesday: 7:30 AM - 9:00 AM
+- **Next Meetup**: Specific date and time for next meeting
 - **Location**: 
-  - Venue name
-  - Street address
-  - City, State, ZIP
-  - Parking/access notes if relevant
+  - Venue: Black & Brew @ the Library
+  - Address: 100 Lake Morton Dr, Lakeland, FL 33801
 - **Format**: Clear, scannable layout with visual hierarchy
 
 **Content Updates:**
-- Next meetup date: Monthly manual update required
+- Next meetup date: ✅ Auto-calculated via JavaScript (1st Saturday & 3rd Tuesday)
 - Location: Update immediately if changed
 - Regular schedule: Rarely changes
 
@@ -107,23 +107,24 @@ A single-page static website for "Guys Having Coffee," a casual men's coffee mee
 <section id="updates">
   <h2>Stay in the Loop</h2>
   <div class="email-signup">
-    <p>Get notified about meetups and occasional updates.</p>
-    <a href="[EXTERNAL_SIGNUP_URL]" class="cta-button">Join Email List</a>
+    <p>Email updates coming soon.</p>
+    <p class="coming-soon">We're setting up a simple way to keep you informed about upcoming meetups.</p>
   </div>
 </section>
 ```
 
-**Content Requirements:**
-- **Headline**: "Stay in the Loop" or "Get Updates"
-- **Description**: Brief explanation of what emails include
-- **Call-to-action**: Link to external service (Mailchimp, ConvertKit, etc.)
-- **Privacy note**: Optional reference to privacy policy
-- **Frequency expectation**: "Occasional updates" or similar
+**Content Requirements (V1):**
+- **Headline**: "Stay in the Loop"
+- **Primary message**: "Email updates coming soon."
+- **Description**: "We're setting up a simple way to keep you informed about upcoming meetups."
+- **No call-to-action button** in V1
+- **Tone**: Informative but not apologetic
 
 **Implementation Notes:**
-- External service link opens in new tab/window
+- ✅ **V1 DECISION**: Show "Coming soon" placeholder instead of functional signup
+- Future versions can implement actual email service integration
+- When implemented: External service link should open in new tab/window
 - No embedded forms or data collection
-- Service selection: Mailchimp, ConvertKit, or similar privacy-conscious option
 
 ### 5. Calendar Section
 **HTML Structure:**
@@ -157,7 +158,7 @@ function generateCalendarLinks(date, title, location) {
 **Implementation Notes:**
 - Primary function works without JavaScript (.ics download)
 - JavaScript enhances by generating direct calendar service links
-- .ics file updated manually with each new meetup date
+- .ics file generated automatically for next calculated meetup date
 
 ### 6. Contact Section
 **HTML Structure:**
@@ -173,9 +174,11 @@ function generateCalendarLinks(date, title, location) {
 ```
 
 **Content Requirements:**
-- **Organizer name**: Primary contact person
-- **Contact method**: Email address (mailto: link)
-- **Response expectation**: Realistic timeframe
+- Omit entirely for now
+- **If included**:
+  - **Organizer name**: [ACTUAL NAME NEEDED]
+  - **Contact method**: [ACTUAL EMAIL NEEDED]
+  - **Response expectation**: Usually within 24-48 hours
 - **Tone**: Approachable, not corporate
 
 ## Design Requirements
@@ -216,9 +219,7 @@ function generateCalendarLinks(date, title, location) {
 ```
 
 ### Next Meetup Date Logic
-**Purpose**: Calculate next 1st Saturday / 3rd Tuesday
-**Fallback**: Manual date display
-**Note**: Only implement if clearly beneficial vs. manual update
+- JavaScript auto-calculation of next 1st Saturday / 3rd Tuesday
 
 ## Content Maintenance
 
@@ -286,3 +287,41 @@ function generateCalendarLinks(date, title, location) {
 **Document Version**: 1.0  
 **Created**: December 17, 2025  
 **Implementation Target**: Direct code generation without interpretation
+
+## Implementation Decisions Required
+
+**Before proceeding with development, the following decisions must be made:**
+
+### Decisions Made ✅
+1. **Contact Information**: ✅ Omit entirely from V1
+2. **Meetup Date Management**: ✅ Auto-calculate with JavaScript
+3. **Meeting Times**: ✅ Saturday 8:00-10:00 AM, Tuesday 7:30-9:00 AM
+4. **Location**: ✅ Black & Brew @ the Library, 100 Lake Morton Dr, Lakeland, FL 33801
+
+### Final Decisions Made ✅
+5. **Email Service Setup**: ✅ Omit from V1, show "Coming soon" placeholder
+6. **Content Approval**: ✅ Purpose section content approved
+7. **Location Details**: ✅ Remove parking reference
+
+### Ready for Implementation
+- ✅ Technical architecture defined
+- ✅ File structure specified  
+- ✅ Design requirements outlined
+- ✅ Accessibility requirements clear
+- ✅ Performance targets set
+- ✅ Meeting schedule and location finalized
+- ✅ Contact approach decided (omit from V1)
+- ✅ Date calculation approach chosen (JavaScript auto-calculate)
+
+## Implementation Status
+
+**🟢 SPECIFICATION COMPLETE**: Ready for immediate implementation.
+
+**✅ ALL DECISIONS FINALIZED**: 
+- Contact section: Omit from V1
+- Date management: Auto-calculate with JavaScript  
+- Email signup: "Coming soon" placeholder
+- Content: Approved as specified
+- Location: Black & Brew @ the Library (no parking note)
+
+**🚀 NEXT STEP**: Begin development - all requirements are now fully specified.
