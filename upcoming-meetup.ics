@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Guys Having Coffee//Event//EN
+BEGIN:VEVENT
+UID:20260104T000000@guyshavingcoffee.com
+DTSTAMP:20260104T000000
+DTSTART:20260120T073000
+DTEND:20260120T090000
+SUMMARY:Guys Having Coffee
+DESCRIPTION:Casual coffee meetup for men. Low effort, no commitment, no expectations.
+LOCATION:Black & Brew @ the Library, 100 Lake Morton Dr, Lakeland, FL 33801
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

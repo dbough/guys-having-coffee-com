@@ -1,0 +1,351 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #3e2723;
+    --color-secondary: #5d4037;
+    --color-accent: #8d6e63;
+    --color-light: #efebe9;
+    --color-background: #ffffff;
+    --color-text: #212121;
+    --color-text-light: #757575;
+    --color-border: #e0e0e0;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --max-width: 1200px;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Typography */
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* Header */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: var(--spacing-lg) 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: var(--color-light);
+    text-align: center;
+    margin: 0;
+}
+
+/* Main Content */
+main {
+    padding: var(--spacing-xl) 0;
+}
+
+section {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg) 0;
+}
+
+section:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Purpose Section */
+#purpose {
+    text-align: center;
+}
+
+#purpose .purpose-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#purpose p {
+    font-size: 1.1rem;
+}
+
+#purpose .no-commitment {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin: var(--spacing-md) 0;
+}
+
+/* Meetup Details Section */
+#meetup-details .schedule {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+#meetup-details h3 {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+#meetup-details .regular-schedule,
+#meetup-details .next-meetup,
+#meetup-details .location {
+    background-color: var(--color-light);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-accent);
+}
+
+#meetup-details p {
+    margin-bottom: var(--spacing-xs);
+}
+
+#meetup-details p:last-child {
+    margin-bottom: 0;
+}
+
+.next-date {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Calendar Section */
+#calendar {
+    background-color: var(--color-light);
+    padding: var(--spacing-xl) 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+}
+
+.calendar-intro {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.calendar-links {
+    margin-top: var(--spacing-md);
+}
+
+.calendar-button,
+.service-links a {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: var(--spacing-xs);
+    min-width: 200px;
+    text-align: center;
+}
+
+.calendar-button:hover,
+.service-links a:hover {
+    background-color: var(--color-primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.calendar-button:focus,
+.service-links a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.service-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+}
+
+.calendar-note {
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* Updates Section */
+#updates {
+    text-align: center;
+}
+
+.email-signup {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: var(--color-light);
+    border-radius: 8px;
+}
+
+.coming-soon-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.coming-soon-desc {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xl);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design - Tablet */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #meetup-details .schedule {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .service-links {
+        justify-content: center;
+    }
+}
+
+/* Responsive Design - Desktop */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    #purpose p {
+        font-size: 1.2rem;
+    }
+
+    #purpose .no-commitment {
+        font-size: 1.4rem;
+    }
+
+    #meetup-details .schedule {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    header,
+    footer {
+        background: none;
+        color: black;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --color-primary: #000000;
+        --color-secondary: #000000;
+        --color-text: #000000;
+        --color-border: #000000;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
