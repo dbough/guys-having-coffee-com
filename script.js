@@ -166,17 +166,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add loading state before updating meetup
-    const meetupDateEl = document.querySelector('.next-meetup-date');
-    if (meetupDateEl) {
-        meetupDateEl.classList.add('loading');
+    const dateBadgeEl = document.querySelector('.date-badge');
+    if (dateBadgeEl) {
+        dateBadgeEl.classList.add('loading');
     }
 
     // Small delay to show loading animation
     setTimeout(() => {
         const nextMeetup = updateNextMeetup();
 
-        if (meetupDateEl) {
-            meetupDateEl.classList.remove('loading');
+        if (dateBadgeEl) {
+            dateBadgeEl.classList.remove('loading');
         }
 
         // Google Calendar button
