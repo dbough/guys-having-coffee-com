@@ -58,9 +58,11 @@ function getThirdTuesday(year, month) {
 function formatDate(date) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
                    'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return {
         day: date.getDate(),
         month: months[date.getMonth()],
+        weekday: days[date.getDay()],
         fullDate: date
     };
 }
@@ -71,7 +73,7 @@ function updateNextMeetup() {
 
     document.getElementById('dateDay').textContent = formatted.day;
     document.getElementById('dateMonth').textContent = formatted.month;
-    document.getElementById('nextMeetupTime').textContent = nextMeetup.time;
+    document.getElementById('nextMeetupTime').textContent = `${formatted.weekday}, ${nextMeetup.time}`;
 
     return nextMeetup;
 }
