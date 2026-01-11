@@ -140,6 +140,13 @@ header {
 }
 
 /* Next Meetup in Schedule Box */
+.next-meetup-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
 .next-meetup-date {
     background: var(--coffee-dark);
     color: var(--bg-white);
@@ -147,7 +154,6 @@ header {
     border-radius: 6px;
     text-align: center;
     display: inline-block;
-    margin-bottom: 0.75rem;
 }
 
 .date-month {
@@ -238,12 +244,6 @@ header {
 }
 
 /* Calendar Button */
-.calendar-button-wrapper {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e5e7eb;
-}
-
 .btn {
     display: inline-flex;
     align-items: center;
@@ -257,7 +257,6 @@ header {
     cursor: pointer;
     transition: all 0.2s ease;
     text-decoration: none;
-    width: 100%;
 }
 
 .btn-icon {
@@ -324,6 +323,7 @@ header {
 .placeholder-form button {
     flex-shrink: 0;
     padding: 0.75rem 1.75rem;
+    width: auto;
 }
 
 .form-note {
