@@ -303,17 +303,12 @@ h3 {
     color: var(--color-primary);
 }
 
-/* Newsletter */
-.newsletter-subheading {
-    color: var(--color-secondary);
-    font-size: 0.95rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.newsletter-form {
+/* Newsletter Form - Inline in Description */
+.newsletter-form-inline {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
 }
 
 .email-input {
@@ -353,7 +348,7 @@ h3 {
     background-color: #C26B43;
 }
 
-.newsletter-note {
+.newsletter-note-inline {
     font-size: 0.85rem;
     color: var(--color-warm-gray);
     font-style: italic;
@@ -442,15 +437,15 @@ footer {
         padding-bottom: var(--spacing-md);
     }
 
-    .newsletter-form {
+    .newsletter-form-inline {
         flex-direction: row;
     }
 
-    .email-input {
+    .newsletter-form-inline .email-input {
         flex: 1;
     }
 
-    .btn-subscribe {
+    .newsletter-form-inline .btn-subscribe {
         padding: var(--spacing-sm) var(--spacing-md);
         white-space: nowrap;
     }
