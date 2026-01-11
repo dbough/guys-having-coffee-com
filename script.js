@@ -151,27 +151,82 @@ function downloadICS(icsContent, filename) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
-    const nextMeetup = updateNextMeetup();
+    // Add sticky header effect on scroll
+    const header = document.querySelector('header');
+    let lastScroll = 0;
 
-    // Google Calendar button
-    document.getElementById('addToGoogleCalendar').addEventListener('click', function() {
-        const url = generateGoogleCalendarURL(nextMeetup);
-        window.open(url, '_blank');
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
     });
 
-    // Apple/Outlook Calendar button
-    document.getElementById('addToAppleCalendar').addEventListener('click', function() {
-        const icsContent = generateICS(nextMeetup);
-        const filename = `guys-having-coffee-${nextMeetup.type.toLowerCase().replace(/\s+/g, '-')}.ics`;
-        downloadICS(icsContent, filename);
-    });
+    // Add loading state before updating meetup
+    const meetupDateEl = document.querySelector('.next-meetup-date');
+    if (meetupDateEl) {
+        meetupDateEl.classList.add('loading');
+    }
 
-    // Placeholder form submission
+    // Small delay to show loading animation
+    setTimeout(() => {
+        const nextMeetup = updateNextMeetup();
+
+        if (meetupDateEl) {
+            meetupDateEl.classList.remove('loading');
+        }
+
+        // Google Calendar button
+        const googleBtn = document.getElementById('addToGoogleCalendar');
+        if (googleBtn) {
+            googleBtn.addEventListener('click', function() {
+                const url = generateGoogleCalendarURL(nextMeetup);
+                window.open(url, '_blank');
+            });
+        }
+    }, 300);
+
+    // Placeholder form submission with visual feedback
     const form = document.querySelector('.placeholder-form');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Email signup will be activated once MailerLite is integrated!');
+            const button = form.querySelector('button');
+            const originalText = button.textContent;
+
+            // Show feedback
+            button.textContent = 'Coming Soon!';
+            button.style.background = 'var(--coffee-medium)';
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        });
+    }
+
+    // Add intersection observer for scroll animations
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.schedule-item').forEach(item => {
+            observer.observe(item);
         });
     }
 });
