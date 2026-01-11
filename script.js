@@ -71,7 +71,6 @@ function updateNextMeetup() {
 
     document.getElementById('dateDay').textContent = formatted.day;
     document.getElementById('dateMonth').textContent = formatted.month;
-    document.getElementById('nextMeetupTitle').textContent = nextMeetup.type;
     document.getElementById('nextMeetupTime').textContent = nextMeetup.time;
 
     return nextMeetup;
