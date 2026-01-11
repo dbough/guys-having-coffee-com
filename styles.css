@@ -83,6 +83,14 @@ header {
     text-align: left;
 }
 
+.about-section p.lead {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
 .about-section p {
     font-size: 1.125rem;
     line-height: 1.75;
@@ -358,6 +366,10 @@ footer p {
 
     .main-content {
         padding: 2.5rem 0;
+    }
+
+    .about-section p.lead {
+        font-size: 1.25rem;
     }
 
     .about-section p {
