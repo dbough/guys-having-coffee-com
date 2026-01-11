@@ -77,7 +77,7 @@ function updateNextMeetup() {
     return nextMeetup;
 }
 
-// Generate .ics file content for Apple Calendar and Outlook
+// Generate .ics file content for Apple Calendar and Outlook with recurring events
 function generateICS(meetup) {
     const formatICSDate = (date) => {
         return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -86,15 +86,26 @@ function generateICS(meetup) {
     const location = 'Black & Brew (at the Library), 100 Lake Morton Dr, Lakeland, FL 33801';
     const description = 'Join us for coffee and conversation at our regular meetup.';
 
+    // Determine recurrence rule based on meetup type
+    let rrule;
+    if (meetup.type === '1st Saturday') {
+        // First Saturday of every month
+        rrule = 'RRULE:FREQ=MONTHLY;BYDAY=1SA';
+    } else {
+        // Third Tuesday of every month
+        rrule = 'RRULE:FREQ=MONTHLY;BYDAY=3TU';
+    }
+
     const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
         'PRODID:-//Guys Having Coffee//EN',
         'BEGIN:VEVENT',
-        `UID:${meetup.date.getTime()}@guyshavingcoffee.org`,
+        `UID:${meetup.type.toLowerCase().replace(/\s+/g, '-')}@guyshavingcoffee.org`,
         `DTSTAMP:${formatICSDate(new Date())}`,
         `DTSTART:${formatICSDate(meetup.date)}`,
         `DTEND:${formatICSDate(meetup.endDate)}`,
+        rrule,
         `SUMMARY:Guys Having Coffee - ${meetup.type}`,
         `DESCRIPTION:${description}`,
         `LOCATION:${location}`,
@@ -106,7 +117,7 @@ function generateICS(meetup) {
     return icsContent;
 }
 
-// Generate Google Calendar URL
+// Generate Google Calendar URL with recurrence
 function generateGoogleCalendarURL(meetup) {
     const formatGoogleDate = (date) => {
         return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -117,7 +128,15 @@ function generateGoogleCalendarURL(meetup) {
     const description = encodeURIComponent('Join us for coffee and conversation at our regular meetup.');
     const dates = `${formatGoogleDate(meetup.date)}/${formatGoogleDate(meetup.endDate)}`;
 
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${description}&location=${location}`;
+    // Add recurrence rule for Google Calendar
+    let recurrence;
+    if (meetup.type === '1st Saturday') {
+        recurrence = encodeURIComponent('RRULE:FREQ=MONTHLY;BYDAY=1SA');
+    } else {
+        recurrence = encodeURIComponent('RRULE:FREQ=MONTHLY;BYDAY=3TU');
+    }
+
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${description}&location=${location}&recur=${recurrence}`;
 }
 
 // Download .ics file
