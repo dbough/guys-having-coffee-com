@@ -78,19 +78,16 @@ header {
     padding: 3.5rem 0;
 }
 
-/* About Section */
-.about-section {
-    max-width: 700px;
-    margin: 0 0 3.5rem 0;
-    text-align: left;
+/* Left Column */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.about-section h2 {
-    font-size: 2.25rem;
-    color: var(--text-dark);
-    margin-bottom: 1.25rem;
-    font-weight: 700;
-    line-height: 1.2;
+/* About Section */
+.about-section {
+    text-align: left;
 }
 
 .about-section p {
@@ -368,11 +365,11 @@ footer p {
 @media (max-width: 968px) {
     .content-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
-    .about-section {
-        max-width: 100%;
+    .left-column {
+        gap: 2rem;
     }
 }
 
@@ -389,20 +386,16 @@ footer p {
         padding: 2.5rem 0;
     }
 
-    .about-section {
-        margin-bottom: 2.5rem;
-    }
-
-    .about-section h2 {
-        font-size: 1.875rem;
-    }
-
     .about-section p {
         font-size: 1rem;
     }
 
     .content-grid {
-        gap: 1.25rem;
+        gap: 1.5rem;
+    }
+
+    .left-column {
+        gap: 1.5rem;
     }
 
     .next-meetup-card,

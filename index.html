@@ -23,14 +23,30 @@
     <main>
         <section class="main-content">
             <div class="container">
-                <div class="about-section">
-                    <h2>Join Us</h2>
-                    <p>Life gets busy, and genuine connection can be hard to find. Guys Having Coffee is a space where men can slow down, grab a cup of coffee, and just be themselves.</p>
-                    <p>No RSVP required. No agenda. No pressure. Show up when you can, stay as long as you'd like, and share as much or as little as you want. Whether you're looking for meaningful conversation, a few laughs, or simply a welcoming place to connect with other men, you're welcome here.</p>
-                </div>
-
                 <div class="content-grid">
-                    <!-- Left Column: Next Meetup (Hero) -->
+                    <!-- Left Column: About & Signup -->
+                    <div class="left-column">
+                        <div class="about-section">
+                            <p>Life gets busy, and genuine connection can be hard to find. Guys Having Coffee is a space where men can slow down, grab a cup of coffee, and just be themselves.</p>
+                            <p>No RSVP required. No agenda. No pressure. Show up when you can, stay as long as you'd like, and share as much or as little as you want. Whether you're looking for meaningful conversation, a few laughs, or simply a welcoming place to connect with other men, you're welcome here.</p>
+                        </div>
+
+                        <div class="signup-section">
+                            <h3>Stay Connected</h3>
+                            <p class="signup-description">Get updates about our meetups</p>
+
+                            <!-- MailerLite form will be integrated here -->
+                            <div class="signup-form" id="mailerliteForm">
+                                <form class="placeholder-form">
+                                    <input type="email" placeholder="Your email" required>
+                                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                                </form>
+                                <p class="form-note">MailerLite integration coming soon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Column: Next Meetup -->
                     <div class="next-meetup-section">
                         <h3>Next Meetup</h3>
                         <div class="next-meetup-card">
@@ -71,33 +87,17 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Schedule & Signup -->
-                    <div class="sidebar-section">
-                        <div class="schedule-section">
-                            <h3>Regular Schedule</h3>
-                            <div class="schedule-list">
-                                <div class="schedule-item">
-                                    <div class="schedule-badge">1st Saturday</div>
-                                    <div class="schedule-time">8:00 AM - 10:00 AM</div>
-                                </div>
-                                <div class="schedule-item">
-                                    <div class="schedule-badge">3rd Tuesday</div>
-                                    <div class="schedule-time">7:30 AM - 9:00 AM</div>
-                                </div>
+                    <!-- Right Column: Schedule -->
+                    <div class="schedule-section">
+                        <h3>Regular Schedule</h3>
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="schedule-badge">1st Saturday</div>
+                                <div class="schedule-time">8:00 AM - 10:00 AM</div>
                             </div>
-                        </div>
-
-                        <div class="signup-section">
-                            <h3>Stay Connected</h3>
-                            <p class="signup-description">Get updates about our meetups</p>
-
-                            <!-- MailerLite form will be integrated here -->
-                            <div class="signup-form" id="mailerliteForm">
-                                <form class="placeholder-form">
-                                    <input type="email" placeholder="Your email" required>
-                                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                                </form>
-                                <p class="form-note">MailerLite integration coming soon</p>
+                            <div class="schedule-item">
+                                <div class="schedule-badge">3rd Tuesday</div>
+                                <div class="schedule-time">7:30 AM - 9:00 AM</div>
                             </div>
                         </div>
                     </div>
