@@ -181,12 +181,20 @@ header.scrolled {
     white-space: nowrap;
 }
 
-/* Next Meetup Main Section */
-.next-meetup-main {
+/* Next Meetup Content Section */
+.next-meetup-content {
     display: flex;
-    align-items: center;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
+    align-items: stretch;
+}
+
+.next-meetup-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .schedule-item {
@@ -216,45 +224,43 @@ header.scrolled {
 .next-meetup-date {
     background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 100%);
     color: var(--bg-white);
-    padding: 1.25rem 1.5rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 12px;
     text-align: center;
-    display: inline-block;
-    box-shadow: 0 2px 8px rgba(92, 58, 30, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(92, 58, 30, 0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
-    min-width: 100px;
+    min-width: 110px;
 }
 
 .next-meetup-date:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(92, 58, 30, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 58, 30, 0.35);
 }
 
 .date-month {
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.95;
+    letter-spacing: 1.5px;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
 }
 
 .date-day {
-    font-size: 2.25rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
     line-height: 1;
-    margin-top: 0.25rem;
 }
 
-.next-meetup-info {
-    flex: 1;
-}
-
-.next-meetup-info p {
+.next-meetup-time {
     font-size: 1.125rem;
     color: var(--text-dark);
     font-weight: 600;
-    margin: 0;
     line-height: 1.4;
 }
 
@@ -381,18 +387,15 @@ header.scrolled {
 }
 
 .btn-calendar {
-    background: transparent;
-    color: var(--light-blue);
-    border: 2px solid var(--light-blue);
-    width: 100%;
+    background: var(--light-blue);
+    color: var(--bg-white);
+    border: none;
 }
 
 .btn-calendar:hover {
-    background: var(--light-blue);
-    color: var(--bg-white);
-    border-color: var(--light-blue);
+    background: var(--primary-blue);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(58, 124, 165, 0.2);
+    box-shadow: 0 4px 12px rgba(30, 74, 95, 0.3);
 }
 
 .btn-calendar:active {
@@ -621,17 +624,17 @@ footer p {
     }
 
     /* Stack next meetup on mobile */
-    .next-meetup-main {
+    .next-meetup-content {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        gap: 1.25rem;
     }
 
     .next-meetup-date {
-        padding: 1rem 1.25rem;
+        align-self: flex-start;
+        padding: 1.25rem 1.5rem;
     }
 
-    .next-meetup-info p {
+    .next-meetup-time {
         font-size: 1rem;
     }
 
