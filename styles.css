@@ -53,23 +53,12 @@ header {
     border-bottom: 1px solid var(--color-light-tan);
 }
 
-.logo-placeholder {
+.logo {
     width: 60px;
     height: 60px;
     flex-shrink: 0;
-    background-color: var(--color-secondary);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.logo-text {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--color-white);
-    letter-spacing: 1px;
 }
 
 .header-text {
@@ -399,13 +388,9 @@ footer {
         margin-bottom: var(--spacing-lg);
     }
 
-    .logo-placeholder {
+    .logo {
         width: 70px;
         height: 70px;
-    }
-
-    .logo-text {
-        font-size: 1.6rem;
     }
 
     h1 {
@@ -461,13 +446,9 @@ footer {
         margin-bottom: var(--spacing-sm);
     }
 
-    .logo-placeholder {
+    .logo {
         width: 55px;
         height: 55px;
-    }
-
-    .logo-text {
-        font-size: 1.3rem;
     }
 
     h1 {
