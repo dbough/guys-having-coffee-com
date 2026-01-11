@@ -89,6 +89,7 @@ header {
     color: var(--text-dark);
     font-weight: 600;
     margin-bottom: 1.5rem;
+    white-space: nowrap;
 }
 
 .about-section p {
