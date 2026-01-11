@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guys Having Coffee - A men's group meeting twice monthly in Lakeland, FL for coffee and conversation">
+    <title>Guys Having Coffee | Lakeland, FL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo-placeholder">
+                    <!-- Logo will be added here -->
+                    <h1>Guys Having Coffee</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Join us for coffee & conversation</h2>
+                <p class="tagline">A community of men gathering to connect, share, and support each other over great coffee</p>
+            </div>
+        </section>
+
+        <section class="location">
+            <div class="container">
+                <h3>Where We Meet</h3>
+                <div class="location-card">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div class="location-info">
+                        <h4>Black & Brew (at the Library)</h4>
+                        <p>100 Lake Morton Dr<br>Lakeland, FL 33801</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Black+%26+Brew,100+Lake+Morton+Dr,Lakeland,FL+33801" target="_blank" class="map-link">View on Map →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule">
+            <div class="container">
+                <h3>When We Meet</h3>
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <div class="schedule-badge">1st Saturday</div>
+                        <div class="schedule-time">8:00 AM - 10:00 AM</div>
+                    </div>
+                    <div class="schedule-card">
+                        <div class="schedule-badge">3rd Tuesday</div>
+                        <div class="schedule-time">7:30 AM - 9:00 AM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-meetup">
+            <div class="container">
+                <h3>Next Meetup</h3>
+                <div class="next-meetup-card">
+                    <div class="next-meetup-date" id="nextMeetupDate">
+                        <div class="date-day" id="dateDay">--</div>
+                        <div class="date-month" id="dateMonth">---</div>
+                    </div>
+                    <div class="next-meetup-info">
+                        <h4 id="nextMeetupTitle">Loading...</h4>
+                        <p id="nextMeetupTime">--</p>
+                        <p class="location-small">Black & Brew (at the Library)</p>
+                    </div>
+                </div>
+
+                <div class="calendar-buttons">
+                    <button class="btn btn-primary" id="addToGoogleCalendar">
+                        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Add to Google Calendar
+                    </button>
+                    <button class="btn btn-secondary" id="addToAppleCalendar">
+                        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Add to Apple/Outlook
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="signup">
+            <div class="container">
+                <h3>Stay Connected</h3>
+                <p class="signup-description">Get email updates about our meetups and community</p>
+
+                <!-- MailerLite form will be integrated here -->
+                <div class="signup-form" id="mailerliteForm">
+                    <form class="placeholder-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <p class="form-note">MailerLite integration coming soon</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Guys Having Coffee | Lakeland, FL</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

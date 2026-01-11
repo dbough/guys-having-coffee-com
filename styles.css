@@ -1,0 +1,411 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a2c2a;
+    --secondary-color: #8b6f47;
+    --accent-color: #d4a574;
+    --text-dark: #2c2c2c;
+    --text-light: #666;
+    --bg-light: #f8f6f3;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--white);
+    padding: 2rem 0;
+    box-shadow: var(--shadow);
+}
+
+.logo-section {
+    text-align: center;
+}
+
+.logo-placeholder h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Sections */
+section {
+    padding: 4rem 0;
+}
+
+section h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Location Section */
+.location {
+    background-color: var(--white);
+}
+
+.location-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.location-card .icon {
+    width: 40px;
+    height: 40px;
+    color: var(--secondary-color);
+    flex-shrink: 0;
+}
+
+.location-info h4 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.location-info p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.map-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.map-link:hover {
+    color: var(--primary-color);
+}
+
+/* Schedule Section */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.schedule-card {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.schedule-badge {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.schedule-time {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Next Meetup Section */
+.next-meetup {
+    background-color: var(--white);
+}
+
+.next-meetup-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+.next-meetup-date {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.date-day {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.next-meetup-info h4 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.next-meetup-info p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.location-small {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+/* Calendar Buttons */
+.calendar-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Signup Section */
+.signup {
+    background-color: var(--bg-light);
+}
+
+.signup-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.signup-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.placeholder-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.placeholder-form input[type="email"] {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.placeholder-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.placeholder-form button {
+    flex-shrink: 0;
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer p {
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-placeholder h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+
+    section h3 {
+        font-size: 1.75rem;
+    }
+
+    .location-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .location-card .icon {
+        margin: 0 auto;
+    }
+
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .next-meetup-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .calendar-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .placeholder-form {
+        flex-direction: column;
+    }
+
+    .placeholder-form input[type="email"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-placeholder h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero h2 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .next-meetup-info h4 {
+        font-size: 1.5rem;
+    }
+}
