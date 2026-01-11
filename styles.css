@@ -360,6 +360,32 @@ h3 {
     margin-top: var(--spacing-xs);
 }
 
+/* Personal Note - Inline in Description */
+.personal-note-inline {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-light-tan);
+}
+
+.personal-note-inline p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-secondary);
+    font-style: italic;
+}
+
+.contact-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     text-align: center;
