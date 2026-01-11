@@ -137,6 +137,58 @@ header.scrolled {
     transform: translateY(-2px);
 }
 
+/* Schedule Header with Regular Schedule in Corner */
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.schedule-label-main {
+    font-size: 0.875rem;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.regular-schedule-compact {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.schedule-label-small {
+    font-size: 0.625rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+}
+
+.schedule-compact-times {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.schedule-compact-times span {
+    font-size: 0.75rem;
+    color: var(--text-medium);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Next Meetup Main Section */
+.next-meetup-main {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .schedule-item {
     margin-bottom: 1.5rem;
 }
@@ -160,17 +212,18 @@ header.scrolled {
     margin: 1.5rem 0;
 }
 
-/* Next Meetup in Schedule Box */
+/* Next Meetup Date Badge */
 .next-meetup-date {
     background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 100%);
     color: var(--bg-white);
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 8px;
     text-align: center;
     display: inline-block;
-    margin-bottom: 0.75rem;
     box-shadow: 0 2px 8px rgba(92, 58, 30, 0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+    min-width: 100px;
 }
 
 .next-meetup-date:hover {
@@ -187,17 +240,22 @@ header.scrolled {
 }
 
 .date-day {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 700;
     line-height: 1;
     margin-top: 0.25rem;
 }
 
+.next-meetup-info {
+    flex: 1;
+}
+
 .next-meetup-info p {
-    font-size: 0.9375rem;
-    color: var(--text-medium);
-    font-weight: 400;
-    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
 }
 
 /* Location in Schedule Box */
@@ -534,6 +592,49 @@ footer p {
         padding: 1.5rem;
     }
 
+    /* Stack schedule header on mobile */
+    .schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .regular-schedule-compact {
+        text-align: left;
+    }
+
+    .schedule-compact-times {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .schedule-compact-times span::after {
+        content: ' | ';
+        margin-left: 0.75rem;
+        color: var(--text-light);
+    }
+
+    .schedule-compact-times span:last-child::after {
+        content: '';
+        margin-left: 0;
+    }
+
+    /* Stack next meetup on mobile */
+    .next-meetup-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .next-meetup-date {
+        padding: 1rem 1.25rem;
+    }
+
+    .next-meetup-info p {
+        font-size: 1rem;
+    }
+
     .signup-section-fullwidth {
         padding: 1.5rem;
     }
@@ -556,10 +657,6 @@ footer p {
     .map-link {
         padding: 0.5rem 0;
         font-size: 0.9375rem;
-    }
-
-    .next-meetup-date {
-        padding: 1.25rem 1.5rem;
     }
 
     footer {
