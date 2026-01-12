@@ -339,7 +339,6 @@ function updateFooterYear() {
 function init() {
     updateNextMeeting();
     initCalendarDropdown();
-    initNewsletterForm();
     updateFooterYear();
 }
 
