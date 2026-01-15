@@ -47,7 +47,7 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
