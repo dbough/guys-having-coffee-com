@@ -192,6 +192,36 @@ h3 {
     font-weight: 500;
 }
 
+/* Cancelled Meetup */
+.cancelled-meetup h2 {
+    color: #c0392b;
+}
+
+.cancelled-tile {
+    opacity: 0.6;
+    position: relative;
+}
+
+.cancelled-tile .cancelled-day {
+    text-decoration: line-through;
+    color: var(--color-warm-gray);
+}
+
+.cancelled-time {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-warm-gray);
+    text-decoration: line-through;
+}
+
+.cancelled-note {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    font-style: italic;
+    margin-top: var(--spacing-xs);
+}
+
 /* Calendar Actions */
 .calendar-actions {
     position: relative;

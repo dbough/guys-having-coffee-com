@@ -47,10 +47,51 @@ function getNthDayOfMonth(year, month, dayOfWeek, occurrence) {
 }
 
 /**
- * Get the next meeting date from the current date
- * @returns {Object} Next meeting details
+ * Fetch and parse cancelled dates from cancelled.txt
+ * @returns {Promise<Set<string>>} Set of cancelled date strings (YYYY-MM-DD)
  */
-function getNextMeeting() {
+async function fetchCancelledDates() {
+    try {
+        const response = await fetch('cancelled.txt');
+        if (!response.ok) return new Set();
+        const text = await response.text();
+        const dates = new Set();
+        for (const line of text.split('\n')) {
+            const trimmed = line.trim();
+            // Skip empty lines and comments
+            if (!trimmed || trimmed.startsWith('#')) continue;
+            // Validate YYYY-MM-DD format and that it parses to a real date
+            if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+                const [year, month, day] = trimmed.split('-').map(Number);
+                const d = new Date(year, month - 1, day);
+                if (d.getFullYear() === year && d.getMonth() === month - 1 && d.getDate() === day) {
+                    dates.add(trimmed);
+                }
+            }
+        }
+        return dates;
+    } catch {
+        return new Set();
+    }
+}
+
+/**
+ * Format a Date object as YYYY-MM-DD for comparison with cancelled dates
+ * @param {Date} date
+ * @returns {string}
+ */
+function toDateString(date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+/**
+ * Get all upcoming meeting candidates sorted by date
+ * @returns {Array} Sorted array of meeting candidates
+ */
+function getMeetingCandidates() {
     const now = new Date();
     const candidates = [];
 
@@ -86,9 +127,27 @@ function getNextMeeting() {
         }
     }
 
-    // Sort by date and return the earliest
     candidates.sort((a, b) => a.date - b.date);
-    return candidates[0];
+    return candidates;
+}
+
+/**
+ * Get the next meeting date from the current date, accounting for cancellations
+ * @param {Set<string>} cancelledDates - Set of cancelled date strings
+ * @returns {Object} Object with cancelledMeeting (if next is cancelled) and nextMeeting
+ */
+function getNextMeeting(cancelledDates) {
+    const candidates = getMeetingCandidates();
+    if (candidates.length === 0) return { cancelledMeeting: null, nextMeeting: null };
+
+    const first = candidates[0];
+    if (cancelledDates.has(toDateString(first.date))) {
+        // The next meeting is cancelled; find the next non-cancelled one
+        const nextValid = candidates.find(c => !cancelledDates.has(toDateString(c.date)));
+        return { cancelledMeeting: first, nextMeeting: nextValid || null };
+    }
+
+    return { cancelledMeeting: null, nextMeeting: first };
 }
 
 /**
@@ -122,10 +181,26 @@ function formatTime(hour, minute) {
 }
 
 /**
- * Update the next meeting display
+ * Update the next meeting display, showing cancellation if applicable
+ * @param {Object|null} cancelledMeeting - The cancelled meeting, if any
+ * @param {Object|null} nextMeeting - The next valid (non-cancelled) meeting
  */
-function updateNextMeeting() {
-    const nextMeeting = getNextMeeting();
+function updateNextMeetingDisplay(cancelledMeeting, nextMeeting) {
+    const cancelledSection = document.getElementById('cancelledMeetup');
+
+    if (cancelledMeeting) {
+        const formatted = formatMeetingDate(cancelledMeeting.date);
+        const startTime = formatTime(cancelledMeeting.config.startHour, cancelledMeeting.config.startMinute);
+        const endTime = formatTime(cancelledMeeting.config.endHour, cancelledMeeting.config.endMinute);
+
+        cancelledSection.querySelector('.cancelled-month').textContent = formatted.month;
+        cancelledSection.querySelector('.cancelled-day').textContent = formatted.day;
+        cancelledSection.querySelector('.cancelled-weekday').textContent = formatted.weekday;
+        cancelledSection.querySelector('.cancelled-time').textContent = `${startTime} - ${endTime}`;
+        cancelledSection.style.display = 'block';
+    } else {
+        cancelledSection.style.display = 'none';
+    }
 
     if (!nextMeeting) {
         console.error('Could not determine next meeting');
@@ -136,7 +211,6 @@ function updateNextMeeting() {
     const startTime = formatTime(nextMeeting.config.startHour, nextMeeting.config.startMinute);
     const endTime = formatTime(nextMeeting.config.endHour, nextMeeting.config.endMinute);
 
-    // Update DOM elements
     document.getElementById('nextMonth').textContent = formatted.month;
     document.getElementById('nextDay').textContent = formatted.day;
     document.getElementById('nextWeekday').textContent = formatted.weekday;
@@ -238,11 +312,10 @@ function generateICalFile() {
 /**
  * Generate Google Calendar URL for recurring meetings
  * Note: Google Calendar URLs have limitations with recurring events, so we'll create for the next meeting
+ * @param {Object} nextMeeting - The next meeting object
  * @returns {string} Google Calendar URL
  */
-function generateGoogleCalendarUrl() {
-    const nextMeeting = getNextMeeting();
-
+function generateGoogleCalendarUrl(nextMeeting) {
     if (!nextMeeting) {
         return '#';
     }
@@ -285,8 +358,9 @@ function generateGoogleCalendarUrl() {
 
 /**
  * Initialize calendar dropdown functionality
+ * @param {Object} nextMeeting - The next non-cancelled meeting
  */
-function initCalendarDropdown() {
+function initCalendarDropdown(nextMeeting) {
     const calendarBtn = document.getElementById('calendarBtn');
     const calendarDropdown = document.getElementById('calendarDropdown');
     const googleCalendarLink = document.getElementById('googleCalendarLink');
@@ -305,7 +379,7 @@ function initCalendarDropdown() {
     });
 
     // Set Google Calendar link
-    googleCalendarLink.href = generateGoogleCalendarUrl();
+    googleCalendarLink.href = generateGoogleCalendarUrl(nextMeeting);
 
     // Set iCal download link
     const icalContent = generateICalFile();
@@ -336,9 +410,12 @@ function updateFooterYear() {
 /**
  * Initialize the application
  */
-function init() {
-    updateNextMeeting();
-    initCalendarDropdown();
+async function init() {
+    const cancelledDates = await fetchCancelledDates();
+    const { cancelledMeeting, nextMeeting } = getNextMeeting(cancelledDates);
+
+    updateNextMeetingDisplay(cancelledMeeting, nextMeeting);
+    initCalendarDropdown(nextMeeting);
     updateFooterYear();
 }
 
