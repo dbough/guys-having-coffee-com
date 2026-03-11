@@ -8,15 +8,6 @@ const MEETINGS = {
         startMinute: 0,
         endHour: 10,
         endMinute: 0
-    },
-    thirdTuesday: {
-        name: 'Third Tuesday Meeting',
-        dayOfWeek: 2, // Tuesday
-        occurrence: 3, // 3rd occurrence
-        startHour: 7,
-        startMinute: 30,
-        endHour: 9,
-        endMinute: 0
     }
 };
 
@@ -105,24 +96,12 @@ function getMeetingCandidates() {
         const firstSat = getNthDayOfMonth(year, month, MEETINGS.firstSaturday.dayOfWeek, MEETINGS.firstSaturday.occurrence);
         firstSat.setHours(MEETINGS.firstSaturday.startHour, MEETINGS.firstSaturday.startMinute, 0, 0);
 
-        // Third Tuesday
-        const thirdTue = getNthDayOfMonth(year, month, MEETINGS.thirdTuesday.dayOfWeek, MEETINGS.thirdTuesday.occurrence);
-        thirdTue.setHours(MEETINGS.thirdTuesday.startHour, MEETINGS.thirdTuesday.startMinute, 0, 0);
-
         // Only add if the meeting is in the future
         if (firstSat > now) {
             candidates.push({
                 date: firstSat,
                 type: 'firstSaturday',
                 config: MEETINGS.firstSaturday
-            });
-        }
-
-        if (thirdTue > now) {
-            candidates.push({
-                date: thirdTue,
-                type: 'thirdTuesday',
-                config: MEETINGS.thirdTuesday
             });
         }
     }
@@ -248,11 +227,6 @@ function generateICalFile() {
         firstSatDate.setMonth(firstSatDate.getMonth() + 1);
     }
 
-    const thirdTueDate = getNthDayOfMonth(now_date.getFullYear(), now_date.getMonth(), MEETINGS.thirdTuesday.dayOfWeek, MEETINGS.thirdTuesday.occurrence);
-    if (thirdTueDate < now_date) {
-        thirdTueDate.setMonth(thirdTueDate.getMonth() + 1);
-    }
-
     let icalContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
@@ -275,26 +249,6 @@ function generateICalFile() {
         `DTSTART:${firstSatStart}`,
         `DTEND:${firstSatEnd}`,
         'RRULE:FREQ=MONTHLY;BYDAY=1SA',
-        'SUMMARY:Guys Having Coffee',
-        `LOCATION:${LOCATION.name}\\, ${LOCATION.address}`,
-        'DESCRIPTION:Join us for coffee and genuine connection. No RSVP required. No agenda. No pressure.',
-        'STATUS:CONFIRMED',
-        'SEQUENCE:0',
-        'END:VEVENT',
-        ''
-    );
-
-    // Third Tuesday Event
-    const thirdTueStart = formatICalDateTime(thirdTueDate, MEETINGS.thirdTuesday.startHour, MEETINGS.thirdTuesday.startMinute);
-    const thirdTueEnd = formatICalDateTime(thirdTueDate, MEETINGS.thirdTuesday.endHour, MEETINGS.thirdTuesday.endMinute);
-
-    icalContent.push(
-        'BEGIN:VEVENT',
-        `UID:third-tuesday-${timestamp}@guyshavingcoffee.com`,
-        `DTSTAMP:${timestamp}`,
-        `DTSTART:${thirdTueStart}`,
-        `DTEND:${thirdTueEnd}`,
-        'RRULE:FREQ=MONTHLY;BYDAY=3TU',
         'SUMMARY:Guys Having Coffee',
         `LOCATION:${LOCATION.name}\\, ${LOCATION.address}`,
         'DESCRIPTION:Join us for coffee and genuine connection. No RSVP required. No agenda. No pressure.',
@@ -337,12 +291,7 @@ function generateGoogleCalendarUrl(nextMeeting) {
     const endDateTime = formatGoogleDateTime(date, config.endHour, config.endMinute);
 
     // Determine recurrence rule
-    let recurrence = '';
-    if (nextMeeting.type === 'firstSaturday') {
-        recurrence = 'RRULE:FREQ=MONTHLY;BYDAY=1SA';
-    } else if (nextMeeting.type === 'thirdTuesday') {
-        recurrence = 'RRULE:FREQ=MONTHLY;BYDAY=3TU';
-    }
+    const recurrence = 'RRULE:FREQ=MONTHLY;BYDAY=1SA';
 
     const params = new URLSearchParams({
         action: 'TEMPLATE',
