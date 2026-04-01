@@ -1,3 +1,4 @@
 # Cancelled meetup dates (one per line, YYYY-MM-DD format)
 # Lines that don't match this format are ignored.
 2026-02-07
+2026-04-04
